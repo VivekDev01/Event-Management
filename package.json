@@ -1,0 +1,68 @@
+{
+  "name": "uow-event",
+  "version": "1.0.0",
+  "description": "UOW event booking system",
+  "main": "app.js",
+  "directories": {
+    "test": "src/test"
+  },
+  "scripts": {
+    "start": "babel-watch src/app.js",
+    "heroku-postbuild": "npm run build",
+    "test": "mocha src/test --opts src/test/mocha.opts",
+    "build": "babel src -d dist --copy-files --no-comments && npm run remove-cache",
+    "serve": "node dist/app.js",
+    "remove-cache": "rm -rf dist/cache/* && touch dist/cache/cache.txt"
+  },
+  "babel": {
+    "presets": [
+      "env"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aaazureee/uow-event.git"
+  },
+  "keywords": [
+    "express",
+    "nodejs",
+    "restful"
+  ],
+  "author": "HCC",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aaazureee/uow-event/issues"
+  },
+  "homepage": "https://github.com/aaazureee/uow-event#readme",
+  "dependencies": {
+    "@babel/cli": "^7.19.3",
+    "@babel/core": "^7.20.2",
+    "@babel/node": "^7.20.2",
+    "babel-polyfill": "^6.26.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.2",
+    "compression": "^1.7.2",
+    "connect-mongo": "^2.0.1",
+    "dotenv": "^5.0.1",
+    "ejs": "^2.5.8",
+    "express": "^4.16.3",
+    "express-http-to-https": "^1.1.4",
+    "express-minify": "^1.0.0",
+    "express-session": "^1.15.6",
+    "moment": "^2.22.0",
+    "mongoose": "^5.6.0",
+    "uglify-es": "^3.3.9"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-register": "^6.26.0",
+    "babel-watch": "^2.0.8",
+    "mocha": "^5.0.5"
+  },
+  "engines": {
+    "npm": "6.0.0",
+    "node": "8.9.4"
+  }
+}

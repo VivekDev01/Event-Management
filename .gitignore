@@ -1,0 +1,7 @@
+node_modules
+.eslintrc.json
+.vscode
+src/cache/*
+!src/cache/cache.txt
+.env
+dist

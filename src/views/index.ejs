@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Event Booking System</title>
+	<%- include partials/html-head %>
+</head>
+
+<body class="home-page">
+	<%- include partials/navbar %>
+
+		<!-- Begin page content -->
+		<main class="container">
+			<header class="title mt-3 mb-0">Upcoming Events</header>
+			<!-- Display list of cards -->
+			<%- include partials/event-view-cards %>
+		</main>
+
+		<!-- Sticky Footer -->
+		<%- include partials/footer %>
+
+			<!-- Bootstrap core JavaScript
+    ================================================== -->
+			<!-- Placed at the end of the document so the pages load faster -->
+			<%- include partials/html-scripts %>
+</body>
+
+</html>
