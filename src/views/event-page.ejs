@@ -16,7 +16,7 @@
         <header class="title mb-0">
           <%= event.eventName %>
         </header>
-				<% if (type === 'Admin') { %>
+				<% if (type === 'staff') { %>
 					<a href="/event/update/id/<%= event.eventId %>" class="btn btn-sm btn-secondary ml-3">Edit</a>
 					<button class="toggle btn btn-sm btn-danger ml-2" data-toggle="modal" data-target="#deleteModal" data-href="/event/delete/id/<%= event.eventId %>">Delete</button>
 				<% } %>
@@ -68,8 +68,8 @@
           </div>
           <div class="row mb-5">
             <div class="col-12 col-md-8">
-            <% if (event.endDate > new Date() && booked) { %>
-            <div class="alert alert-info mt-3 mb-3">You are currently booked into this event.</div>
+            <% if (event.endDate > new Date() && joined) { %>
+            <div class="alert alert-info mt-3 mb-3">You are currently joined into this event.</div>
             <% } %>
 
             <% if (event.endDate < new Date()) { %>
@@ -83,18 +83,18 @@
                   </div>
                 </div>
               </div>
-              <% if (eventFull && !booked && event.endDate > new Date()) { %>
-              <div class="alert alert-danger">This event is currently fully booked.</div>
+              <% if (eventFull && !joined && event.endDate > new Date()) { %>
+              <div class="alert alert-danger">This event is currently fully joined.</div>
               <% } %>
 
               <% if (event.endDate > new Date() && username != null ) { %>
-              <button id="btn-book" data-price="<%= event.price %>" data-eventid="<%= event.eventId %>" data-status="<%= booked ? 'cancel-book' : 'book-in' %>" class="btn <%= booked ? 'btn-danger' : 'btn-primary' %> mt-0 " <%= eventFull && !booked ? 'disabled' : '' %> >
-              <%= booked ? 'Cancel' : 'Book in' %>
+              <button id="btn-book" data-price="<%= event.price %>" data-eventid="<%= event.eventId %>" data-status="<%= joined ? 'cancel-book' : 'book-in' %>" class="btn <%= joined ? 'btn-danger' : 'btn-primary' %> mt-0 " <%= eventFull && !joined ? 'disabled' : '' %> >
+              <%= joined ? 'Cancel' : 'Book in' %>
               </button>
               <% } %>
             </div>
 
-            <% if (type === 'Admin') { %>
+            <% if (type === 'staff') { %>
             <div class="col-12 col-md-4">
               <div class="card mt-3">
                 <h5 class="card-header">Other Information</h5>
@@ -145,7 +145,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title text-danger">Booking failed</h5>
+          <h5 class="modal-title text-danger">Joining failed</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>

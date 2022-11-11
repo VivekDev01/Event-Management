@@ -38,13 +38,13 @@ router.get('/id/:eventID', async (req, res, next) => {
     let event = res.locals.options.event;
 
     res.locals.options.eventFull = false;
-    res.locals.options.booked = false;
+    res.locals.options.joined = false;
     
     let user = await User.findOne({username: res.locals.options.username});
     //when user is logged in
     if (user) {
-      if (user.eventsBooked.includes(event.eventId)) {
-        res.locals.options.booked = true;
+      if (user.eventsjoined.includes(event.eventId)) {
+        res.locals.options.joined = true;
       } 
     } 
 

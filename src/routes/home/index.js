@@ -3,7 +3,7 @@ import Event from '../../models/event';
 import registerRouter from './register';
 import signInRouter from './sign-in';
 import searchRouter from './search';
-import bookedRouter from './booked';
+import joinedRouter from './joined';
 import manageRouter from './manage';
 import { parseEvents } from '../common/eventParser';
 import { isSignedIn } from '../common/authCheck';
@@ -13,7 +13,7 @@ const router = express.Router();
 router.use('/', registerRouter);
 router.use('/', signInRouter);
 router.use('/', searchRouter);
-router.use('/', bookedRouter);
+router.use('/', joinedRouter);
 router.use('/', manageRouter);
 
 router.get('/', (req, res) => {

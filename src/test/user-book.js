@@ -49,12 +49,12 @@ describe('User booking test', () => {
           assert(event.currentBookings === 1);
           // push eventId to user bookings
           return User.findByIdAndUpdate(
-            user._id, { $push: { eventsBooked: event.eventId } }, { new: true }
+            user._id, { $push: { eventsjoined: event.eventId } }, { new: true }
           );
         })
         .then(user => {
-          assert(user.eventsBooked.length === 1);
-          assert(user.eventsBooked.indexOf(eventId) !== -1);
+          assert(user.eventsjoined.length === 1);
+          assert(user.eventsjoined.indexOf(eventId) !== -1);
           done();
         });
     });

@@ -7,7 +7,7 @@ describe('User saving test', () => {
   const username = 'aaazureee';
   const email = 'aaazureee@gmail.com';
   const password = '123';
-  const eventsBooked = [1000];
+  const eventsjoined = [1000];
 
   beforeEach(done => {
     mongoose.connection.db.dropCollection('users', () => done());
@@ -15,7 +15,7 @@ describe('User saving test', () => {
 
   it('Save an user with all accepted attributes', done => {
     const user = new User({
-      username, email, password, eventsBooked
+      username, email, password, eventsjoined
     });
     user.save().then(() => {
       assert(!user.isNew);
@@ -25,7 +25,7 @@ describe('User saving test', () => {
 
   it('Save an user with missing email is not allowed', done => {
     const missingEmailUser = new User({
-      username, password, eventsBooked
+      username, password, eventsjoined
     });
     missingEmailUser.save().catch(err => {
       assert(err.message);
@@ -34,7 +34,7 @@ describe('User saving test', () => {
   });
 
   it('Save 2 user with duplicate values (concurrent) is not allowed', done => {
-    const user1 = { username, email, password, eventsBooked };
+    const user1 = { username, email, password, eventsjoined };
     const user2 = Object.assign({}, user1);
     user2.email = 'kappa123@gmail.com';
 
@@ -51,8 +51,8 @@ describe('User saving test', () => {
   });
 
   it('Save 2 user with duplicate values (sequential) is not allowed', done => {
-    const user1 = { username, email, password, eventsBooked };
-    const user2 = { username, email, password, eventsBooked };
+    const user1 = { username, email, password, eventsjoined};
+    const user2 = { username, email, password, eventsjoined };
     user2.email = 'kappa123@gmail.com';
 
     User.ensureIndexes(() => {

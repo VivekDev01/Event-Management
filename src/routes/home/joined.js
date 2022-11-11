@@ -6,7 +6,7 @@ import { isSignedIn } from '../common/authCheck';
 
 const router = express.Router();
 
-router.get('/booked-events', isSignedIn, async (req, res, next) => {
+router.get('/joined-events', isSignedIn, async (req, res, next) => {
   try {
     let user = await User.findOne({
       username: res.locals.options.username
@@ -14,7 +14,7 @@ router.get('/booked-events', isSignedIn, async (req, res, next) => {
 
     let events = await Event.find({
       eventId: {
-        $in: user.eventsBooked
+        $in: user.eventsjoined
       },
       endDate: {
         $gt: new Date()
@@ -25,8 +25,8 @@ router.get('/booked-events', isSignedIn, async (req, res, next) => {
   
     res.locals.options.events = parseEvents(events);
   
-    res.locals.options.page = 'booked-events';
-    res.render('booked', res.locals.options);
+    res.locals.options.page = 'joined-events';
+    res.render('joined', res.locals.options);
   } catch (err) {
     next(err);
   }

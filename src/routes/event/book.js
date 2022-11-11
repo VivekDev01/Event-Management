@@ -13,18 +13,18 @@ router.post('/', isSignedIn, async (req, res, next) => {
       if (!event) {
         res.json({ error: { type: 'eventNonExistent', message: 'Event no longer exists.' } });
       } else if (event.currentBookings >= event.capacity) {
-        res.json({ error: { type: 'eventFull', message: 'Event is already fully booked.' } });
+        res.json({ error: { type: 'eventFull', message: 'Event is already fully joined.' } });
       } else if (event.endDate < new Date()) {
         res.json({ error: { type: 'eventEnded', message: 'Event has already ended.' } });
-      } else if (user.eventsBooked.includes(event.eventId)) {
-        res.json({ error: { type: 'alreadyBooked', message: 'You have already booked into this event.' } });
+      } else if (user.eventsjoined.includes(event.eventId)) {
+        res.json({ error: { type: 'alreadyjoined', message: 'You have already joined into this event.' } });
       } else {
         //process booking
         event.currentBookings += 1;
         await event.save();
-        user.eventsBooked.push(event.eventId);
+        user.eventsjoined.push(event.eventId);
         user.history.push({
-          action: `Booked <a href="/event/id/${event.eventId}">${event.eventName}</a>`,
+          action: `joined <a href="/event/id/${event.eventId}">${event.eventName}</a>`,
           time: Date.now()
         });
         await user.save();
@@ -33,7 +33,7 @@ router.post('/', isSignedIn, async (req, res, next) => {
     } else if (req.body.type === 'cancel') {
       event.currentBookings -= 1;
       await event.save();
-      user.eventsBooked = user.eventsBooked.filter(value => value !== event.eventId);
+      user.eventsjoined = user.eventsjoined.filter(value => value !== event.eventId);
       user.history.push({
         action: `Cancelled booking for <a href="/event/id/${event.eventId}">${event.eventName}</a>`,
         time: Date.now()

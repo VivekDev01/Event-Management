@@ -23,7 +23,7 @@ const userSchema = new Schema({
     type: String,
     enum: ['student', 'staff'],
   },
-  eventsBooked: [Number],
+  eventsjoined: [Number],
   history: [
     {
       action: String,
