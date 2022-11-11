@@ -3,7 +3,7 @@ import Event from '../models/event';
 import User from '../models/user';
 import assert from 'assert';
 
-describe('User booking test', () => {
+describe('User joining test', () => {
   // sample event
   const eventName = 'Sample event 1';
   const summary = 'Sample summary 1';
@@ -26,7 +26,7 @@ describe('User booking test', () => {
       .catch(() => done());
   });
 
-  it('An user make an event booking', done => {
+  it('An user make an event joining', done => {
     // sample event
     const event = new Event({
       eventName, summary, address, startDate, endDate, fullDesc, capacity
@@ -39,15 +39,15 @@ describe('User booking test', () => {
       user.save()
         .then(() => {
           assert(!user.isNew);
-          // inc current bookings
+          // inc current joinings
           return Event.findByIdAndUpdate(
-            event._id, { $inc: { currentBookings: 1 }, }, { new: true }
+            event._id, { $inc: { currentjoinings: 1 }, }, { new: true }
           );
         })
         .then(event => {
           eventId = event.eventId;
-          assert(event.currentBookings === 1);
-          // push eventId to user bookings
+          assert(event.currentjoinings === 1);
+          // push eventId to user joinings
           return User.findByIdAndUpdate(
             user._id, { $push: { eventsjoined: event.eventId } }, { new: true }
           );

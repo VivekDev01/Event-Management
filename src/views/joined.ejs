@@ -11,10 +11,10 @@
 
     <!-- Begin page content -->
     <main class="container">
-      <header class="title my-3">Booking Reminders</header>
+      <header class="title my-3">Joining Reminders</header>
       <div class="row">
         <div class="col-12 col-md-6 col-lg-5">
-          <div class="list-group" id="booking-list" role="tablist">
+          <div class="list-group" id="joining-list" role="tablist">
             <% for (event of events) { %>  
               <a class="list-group-item list-group-item-action" data-toggle="list" href="#list-<%= event.eventId %>" role="tab">
                   <h5><%= event.eventName %></h5>

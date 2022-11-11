@@ -1,17 +1,17 @@
-let button = $('#btn-book');
+let button = $('#btn-join');
 let eventId = Number(button.data('eventid'));
 
 let data = {
   eventId,
 };
 
-if (button.data('status') === 'book-in') {
-  data.type = 'book-in';
+if (button.data('status') === 'join-in') {
+  data.type = 'join-in';
 } else {
   data.type = 'cancel';
 }
 
-if (button.data('price') !== 'Free' && data.type === 'book-in') {
+if (button.data('price') !== 'Free' && data.type === 'join-in') {
   button.click(() => {
     window.location.href = `/event/id/${eventId}/checkout`;
   });
@@ -20,7 +20,7 @@ if (button.data('price') !== 'Free' && data.type === 'book-in') {
     button.attr('disabled', true);
     $.ajax({
       type: 'POST',
-      url: '/event/book',
+      url: '/event/join',
       data: JSON.stringify(data),
       contentType: 'application/json',
       success: data => {

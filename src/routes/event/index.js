@@ -3,14 +3,14 @@ const router = express.Router();
 import Event from '../../models/event';
 import User from '../../models/user';
 import createRouter from './create';
-import bookRouter from './book';
+import joinRouter from './join';
 import updateRouter from './update';
 import deleteRouter from './delete';
 import { parseEvent } from '../common/eventParser';
 import { isSignedIn } from '../common/authCheck';
 
 router.use('/create', createRouter);
-router.use('/book', bookRouter);
+router.use('/join', joinRouter);
 router.use('/update', updateRouter);
 router.use('/delete', deleteRouter);
 
@@ -48,7 +48,7 @@ router.get('/id/:eventID', async (req, res, next) => {
       } 
     } 
 
-    if (event.currentBookings >= event.capacity) {
+    if (event.currentjoinings >= event.capacity) {
       res.locals.options.eventFull = true;
     } 
 

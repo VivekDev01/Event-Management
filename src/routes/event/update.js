@@ -31,8 +31,8 @@ router.put('/id/:eventID/', isStaff, async (req, res) => {
 
   let event = await Event.findOne({ eventId: req.params.eventID });
 
-  if (capacity < event.currentBookings) {
-    return res.json({ error: 'Updated event\'s capacity must be higher than current bookings.' });
+  if (capacity < event.currentjoinings) {
+    return res.json({ error: 'Updated event\'s capacity must be higher than current joinings.' });
   }
 
   Event.findOneAndUpdate({ eventId: req.params.eventID }, {
