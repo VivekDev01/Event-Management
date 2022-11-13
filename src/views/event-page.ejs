@@ -19,6 +19,9 @@
 				<% if (type === 'staff') { %>
 					<a href="/event/update/id/<%= event.eventId %>" class="btn btn-sm btn-secondary ml-3">Edit</a>
 					<button class="toggle btn btn-sm btn-danger ml-2" data-toggle="modal" data-target="#deleteModal" data-href="/event/delete/id/<%= event.eventId %>">Delete</button>
+          <form action="" method="post">
+             <button class="toggle btn btn-sm btn-info ml-2" data-toggle="modal" data-href="/event/delete/id/<%= event.eventId %>/users-joined" >Joined Users</button>
+          </form>
 				<% } %>
         <!-- Modal -->
         <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteLabel" aria-hidden="true">

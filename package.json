@@ -51,6 +51,7 @@
     "express-session": "^1.15.6",
     "moment": "^2.22.0",
     "mongoose": "^5.6.0",
+    "syntax-error": "^1.4.0",
     "uglify-es": "^3.3.9"
   },
   "devDependencies": {

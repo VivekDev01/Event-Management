@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Users Joined - Event Management System Software</title>
+  <%- include partials/html-head %>
+</head>
+
+<body class="joined">
+  <%- include partials/navbar %>
+
+    <!-- Begin page content -->
+    <main class="container">
+      <header class="title my-3">User Joined</header>
+      <div class="row">
+        <div class="col-12 col-md-6 col-lg-5">
+          <div class="list-group" id="joining-list" role="tablist">
+            <% for (user of users) { %>  
+                  <h5><%= user.username %></h5>
+                  <small><%= user.email %></small>
+                  <span class="font-italic">
+                    <%= user.eventsjoined %>
+                  </span>
+            <% } %>
+          </div>
+        </div>
+    </main>
+
+    <!-- Sticky Footer -->
+    <%- include partials/footer %>
+
+      <!-- Bootstrap core JavaScript
+    ================================================== -->
+      <!-- Placed at the end of the document so the pages load faster -->
+      <%- include partials/html-scripts %>
+</body>
+
+</html>

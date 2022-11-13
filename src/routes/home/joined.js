@@ -29,7 +29,7 @@ router.get('/joined-events', isSignedIn, async (req, res, next) => {
     res.render('joined', res.locals.options);
   } catch (err) {
     next(err);
-  }
+  } 
 });
 
 export default router;

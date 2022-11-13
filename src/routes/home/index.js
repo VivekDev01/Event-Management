@@ -7,6 +7,7 @@ import joinedRouter from './joined';
 import manageRouter from './manage';
 import { parseEvents } from '../common/eventParser';
 import { isSignedIn } from '../common/authCheck';
+import userRouter from "./user"
 
 const router = express.Router();
 
@@ -15,6 +16,7 @@ router.use('/', signInRouter);
 router.use('/', searchRouter);
 router.use('/', joinedRouter);
 router.use('/', manageRouter);
+router.use("/", userRouter);
 
 router.get('/', (req, res) => {
   Event.find({})
