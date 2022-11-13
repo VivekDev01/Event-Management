@@ -18,3 +18,12 @@ export function isStaff(req, res, next) {
     link: '/'
   });
 }
+
+export function isStudent(req, res, next) {
+  if (res.locals.options.type === 'student') return next();
+  // Not authorized
+  return res.status(err.status).render('error_views/auth-error', {
+    error: err.message,
+    link: '/'
+  });
+}
