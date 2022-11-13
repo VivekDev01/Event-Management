@@ -16,11 +16,12 @@
         <div class="col-12 col-md-6 col-lg-5">
           <div class="list-group" id="joining-list" role="tablist">
             <% for (user of users) { %>  
-                  <h5><%= user.username %></h5>
-                  <small><%= user.email %></small>
-                  <span class="font-italic">
-                    <%= user.eventsjoined %>
-                  </span>
+              <ul class="list-group">
+                <li class="list-group-item list-group-item-primary" aria-current="true">Name: <%= user.username %></li>
+                <li class="list-group-item ">Email: <%= user.email %></li>
+                <li class="list-group-item ">Events: <%= user.eventsjoined %></li>
+              </ul>
+            <br>                
             <% } %>
           </div>
         </div>
@@ -36,3 +37,5 @@
 </body>
 
 </html>
+
+
